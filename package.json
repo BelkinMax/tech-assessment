@@ -1,0 +1,25 @@
+{
+  "name": "tech-assessment",
+  "version": "1.0.0",
+  "description": "Alten technical assessment",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon run index",
+    "start:watch": "nodemon run -w index",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BelkinMax/tech-assessment.git"
+  },
+  "author": "Maxim Belkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BelkinMax/tech-assessment/issues"
+  },
+  "homepage": "https://github.com/BelkinMax/tech-assessment#readme",
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15"
+  }
+}
