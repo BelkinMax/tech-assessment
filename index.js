@@ -1,7 +1,9 @@
-const add = (n1, n2) => {
-    return n1 + n2
+const getCategoryPath = (categories, categoryName) => {
+  let path
+
+  return path
 }
 
 module.exports = {
-    add
+  getCategoryPath,
 }
