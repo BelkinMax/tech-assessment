@@ -32,15 +32,24 @@ describe("Index has to", () => {
 
     expect(received).toBe(expected)
   })
+
   it("get category2 path", () => {
     const expected = "/category1/category2"
     const received = getCategoryPath(categories, "category2")
 
     expect(received).toBe(expected)
   })
+
   it("get category5 path", () => {
     const expected = "/category5"
-    const received = getCategoryPath(categories, "/category5")
+    const received = getCategoryPath(categories, "category5")
+
+    expect(received).toBe(expected)
+  })
+
+  it("get undefined if the category does not exists", () => {
+    const expected = undefined
+    const received = getCategoryPath(categories, "category6")
 
     expect(received).toBe(expected)
   })

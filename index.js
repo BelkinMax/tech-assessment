@@ -1,7 +1,12 @@
 const getCategoryPath = (categories, categoryName) => {
-  let path
+  for (const { name, subcategories } of categories) {
+    if (name === categoryName) return `/${name}`
 
-  return path
+    const path = getCategoryPath(subcategories, categoryName)
+    if (path) return `/${name}${path}`
+  }
+
+  return
 }
 
 module.exports = {
