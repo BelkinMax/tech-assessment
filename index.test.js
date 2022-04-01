@@ -1,4 +1,4 @@
-const { getCategoryPath } = require("./index.js")
+const { router } = require("./index.js")
 
 describe("Index has to", () => {
   const categories = [
@@ -26,31 +26,41 @@ describe("Index has to", () => {
     },
   ]
 
-  it("get category4 path", () => {
-    const expected = "/category1/category3/category4"
-    const received = getCategoryPath(categories, "category4")
+  const categoriesRouter = router.init(categories)
 
-    expect(received).toBe(expected)
+  it("get category4 path", () => {
+    const EXPECTED = "/category1/category3/category4"
+    const filteredNodes = categoriesRouter.getNodesByName("category4")
+    const [ receivedNode ] = filteredNodes
+
+    expect(filteredNodes.length).toBe(1)
+    expect(receivedNode.getPath()).toBe(EXPECTED)
   })
 
   it("get category2 path", () => {
-    const expected = "/category1/category2"
-    const received = getCategoryPath(categories, "category2")
+    const EXPECTED = "/category1/category2"
+    const filteredNodes = categoriesRouter.getNodesByName("category2")
+    const [ receivedNode ] = filteredNodes
 
-    expect(received).toBe(expected)
+    expect(filteredNodes.length).toBe(1)
+    expect(receivedNode.getPath()).toBe(EXPECTED)
   })
 
   it("get category5 path", () => {
-    const expected = "/category5"
-    const received = getCategoryPath(categories, "category5")
+    const EXPECTED = "/category5"
+    const filteredNodes = categoriesRouter.getNodesByName("category5")
+    const [ receivedNode ] = filteredNodes
 
-    expect(received).toBe(expected)
+    expect(filteredNodes.length).toBe(1)
+    expect(receivedNode.getPath()).toBe(EXPECTED)
   })
 
   it("get undefined if the category does not exists", () => {
-    const expected = undefined
-    const received = getCategoryPath(categories, "category6")
+    const EXPECTED = undefined
+    const filteredNodes = categoriesRouter.getNodesByName("category6")
+    const [ receivedNode ] = filteredNodes
 
-    expect(received).toBe(expected)
+    expect(filteredNodes.length).toBe(1)
+    expect(receivedNode.getPath()).toBe(EXPECTED)
   })
 })
