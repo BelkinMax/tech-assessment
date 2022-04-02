@@ -34,7 +34,7 @@ describe("Index has to", () => {
     const [ receivedNode ] = filteredNodes
 
     expect(filteredNodes.length).toBe(1)
-    expect(receivedNode.getPath()).toBe(EXPECTED)
+    expect(receivedNode.path).toBe(EXPECTED)
   })
 
   it("get category2 path", () => {
@@ -43,7 +43,7 @@ describe("Index has to", () => {
     const [ receivedNode ] = filteredNodes
 
     expect(filteredNodes.length).toBe(1)
-    expect(receivedNode.getPath()).toBe(EXPECTED)
+    expect(receivedNode.path).toBe(EXPECTED)
   })
 
   it("get category5 path", () => {
@@ -52,7 +52,7 @@ describe("Index has to", () => {
     const [ receivedNode ] = filteredNodes
 
     expect(filteredNodes.length).toBe(1)
-    expect(receivedNode.getPath()).toBe(EXPECTED)
+    expect(receivedNode.path).toBe(EXPECTED)
   })
 
   it("get undefined if the category does not exists", () => {
@@ -61,6 +61,7 @@ describe("Index has to", () => {
     const [ receivedNode ] = filteredNodes
 
     expect(filteredNodes.length).toBe(1)
-    expect(receivedNode.getPath()).toBe(EXPECTED)
+    expect(receivedNode.isEmpty()).toBe(true)
+    expect(receivedNode.path).toBe(EXPECTED)
   })
 })

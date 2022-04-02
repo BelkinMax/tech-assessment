@@ -3,16 +3,16 @@ class RouterBuilder {
     this.nodes = []
   }
 
-  build(categories, node, parentNodePath = "") {
+  build(categories, nodeInstance, parentNodePath = "") {
     let currentFolder, currentPath
 
     for (const { name, subcategories = [] } of categories) {
       currentFolder = `/${name}`
       currentPath = `${parentNodePath}${currentFolder}`
 
-      this.nodes.push(new node().setName(name).setPath(currentPath))
-      
-      this.build(subcategories, node, currentPath)
+      this.nodes.push(new nodeInstance().setName(name).setPath(currentPath))
+
+      this.build(subcategories, nodeInstance, currentPath)
     }
 
     return
@@ -38,11 +38,8 @@ class Node {
     return this
   }
 
-  getName() {
-    return this.name
-  }
-  getPath() {
-    return this.path
+  isEmpty() {
+    return !this.name
   }
 }
 
@@ -58,26 +55,19 @@ class Router extends RouterBuilder {
     return this
   }
 
+  get isCreated() {
+    return !!this.nodes.length
+  }
+
   getAllNodes() {
     return this.nodes
   }
 
   getNodesByName(name = "") {
     return this.withFallback(
-      this.nodes.filter((node) => node.getName() === name),
+      this.nodes.filter((node) => node.name === name),
       [new this.nodeInstance()]
     )
-  }
-
-  getNodesByPath(path = "") {
-    return this.withFallback(
-      this.nodes.filter((node) => node.getPath() === path),
-      [new this.nodeInstance()]
-    )
-  }
-
-  get isCreated() {
-    return !!this.nodes.length
   }
 }
 
